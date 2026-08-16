@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* ── Ultra-Luxury Construction & Architecture Palette ── */
+  --color-primary-navy: #081C35;       /* Deep Navy Primary Background */
+  --color-secondary-navy: #102949;     /* Secondary Dark Blue */
+  --color-navy-card: #0D223F;          /* Dark Navy Card Container */
+  
+  --color-gold-primary: #D4A437;       /* Premium Gold Accent */
+  --color-gold-highlight: #F2C14E;     /* Highlight Gold */
+  --color-gold-soft: #F9E7B9;          /* Soft Cream Gold Tint */
+  
+  --color-section-light: #FAFAFA;      /* Soft White Section Background */
+  --color-bg-white: #FFFFFF;           /* Pure White */
+  
+  --color-text-white: #FFFFFF;         /* Pure White Text */
+  --color-text-light: #E8E8E8;         /* Light Gray Body Text */
+  --color-text-dark: #081C35;          /* Deep Navy Text */
+  --color-text-muted: #8E9BAE;         /* Slate Muted Text */
+
+  --font-heading: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* Base Body Style - Dark Luxury First & Clean Text */
+body {
+  font-family: "Inter", "Plus Jakarta Sans", sans-serif;
+  background-color: #081C35;
+  color: #E8E8E8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+/* Clear text on dark backgrounds - ensure light container paragraphs stay dark */
+.bg-white p,
+.bg-slate-50 p,
+.bg-slate-100 p {
+  color: #081C35;
+}
+
+/* Section paragraph readability */
+section p {
+  line-height: 1.7;
+}
+
+/* Ensure list text is readable */
+li {
+  line-height: 1.65;
+}
+
+/* Luxury Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F2C14E 0%, #D4A437 50%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gold Button Gradients */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #F2C14E 0%, #D4A437 100%);
+}
+
+.bg-gold-gradient:hover {
+  background: linear-gradient(135deg, #FBE395 0%, #E2B242 100%);
+}
+
+/* Dark Navy Gradients */
+.bg-navy-gradient {
+  background: linear-gradient(180deg, #081C35 0%, #102949 100%);
+}
+
+.bg-navy-radial {
+  background: radial-gradient(circle at top center, #14335B 0%, #081C35 70%);
+}
+
+/* Luxury Glassmorphic Card */
+.glass-navy-card {
+  background: rgba(16, 41, 73, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 164, 55, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.glass-navy-card:hover {
+  border-color: rgba(242, 193, 78, 0.6);
+  box-shadow: 0 25px 60px rgba(212, 164, 55, 0.15);
+}
+
+/* Card Utilities */
+.card-light-clean {
+  background: #FFFFFF;
+  border: 1px solid rgba(212, 164, 55, 0.2);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(8, 28, 53, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-light-clean:hover {
+  transform: translateY(-6px);
+  border-color: #D4A437;
+  box-shadow: 0 25px 45px rgba(212, 164, 55, 0.18);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #081C35;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #F2C14E 0%, #D4A437 100%);
+  border-radius: 9999px;
+}
+
+/* ── Infinite Marquee / Logo Scroll Animation ── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-reverse 30s linear infinite;
+}
+
+.marquee-track:hover,
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Glow Keyframes */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-glow {
+  animation: pulse-glow 6s infinite ease-in-out;
+}

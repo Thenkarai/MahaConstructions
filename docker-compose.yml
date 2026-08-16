@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: maha_db
+    restart: always
+    environment:
+      POSTGRES_USER: maha_admin
+      POSTGRES_PASSWORD: maha_secure_password_99
+      POSTGRES_DB: maha_construction
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: maha_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://maha_admin:maha_secure_password_99@db:5432/maha_construction
+      - JWT_SECRET_KEY=maha_construction_secret_key_luxury_level_99
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: maha_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
